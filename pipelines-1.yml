@@ -21,5 +21,6 @@ steps:
     location: 'East US'
     templateLocation: 'URL of the file'
     csmFileLink: 'https://raw.githubusercontent.com/fefogonzalez/RepoAzure/main/deploy_resources.json'
-    overrideParameters: '-adminUsername=myadminuser -adminPassword=dfRgfdfdgdf234df451dgfhg -dnsLabelPrefix=minuevavmtest'
+    csmParametersFileLink: '-adminUsername=myadminuser -adminPassword=dfRgfdfdgdf234df451dgfhg -dnsLabelPrefix=minuevavmtest'
     deploymentMode: 'Incremental'
+    deploymentName: 'Nombre Deploy'
