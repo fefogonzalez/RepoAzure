@@ -11,6 +11,13 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: 'AzureRmPipeline-conn'
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    inlineScript: 'az group create --name OtroRG --location EastUS'
 - task: AzureResourceManagerTemplateDeployment@3
   inputs:
     deploymentScope: 'Resource Group'
@@ -24,3 +31,13 @@ steps:
     overrideParameters: '-adminUsername=myadminuser -dnsLabelPrefix=minuevavmtest'
     deploymentMode: 'Incremental'
     deploymentName: 'NombreDeploy'
+
+          addSpnToEnvironment: 
+          condition: 
+
+          - task: AzureCLI@2
+            inputs:
+              azureSubscription: 'AzureRmPipeline-conn'
+              scriptType: 'bash'
+              scriptLocation: 'inlineScript'
+              inlineScript: 'az group create --name OtroRG --location EastUS'
