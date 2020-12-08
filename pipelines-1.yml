@@ -23,4 +23,4 @@ steps:
     csmFileLink: 'https://raw.githubusercontent.com/fefogonzalez/RepoAzure/main/deploy_resources.json'
     csmParametersFileLink: '-adminUsername=myadminuser -adminPassword=dfRgfdfdgdf234df451dgfhg -dnsLabelPrefix=minuevavmtest'
     deploymentMode: 'Incremental'
-    deploymentName: 'Nombre Deploy'
+    deploymentName: 'NombreDeploy'
