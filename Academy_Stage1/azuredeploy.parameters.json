@@ -1,0 +1,39 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "newStorageAccountName": {
+      "value": "fgonzalezstoacc"
+    },
+    "mysqlPassword": {
+      "reference": {
+        "keyVault": {
+        "id": "/subscriptions/6bb69dc1-ef0f-4bea-bcdc-580a2ad5e6e4/resourceGroups/fgtestrg/providers/Microsoft.KeyVault/vaults/fgtest"
+        },
+        "secretName": "mySqlPassword"
+      }
+    },
+    "adminUsername": {
+      "value": "myvmuser"
+    },
+    "dnsNameForPublicIP": {
+      "value": "myvmacademy"
+    },
+    "adminPasswordOrKey": {
+      /*
+      "reference": {
+        "keyVault": {
+        "id": "/subscriptions/6bb69dc1-ef0f-4bea-bcdc-580a2ad5e6e4/resourceGroups/fgtestrg/providers/Microsoft.KeyVault/vaults/fgtest"
+        },
+        "secretName": "vmlinuxkey"
+      }
+      */
+      "reference": {
+        "keyVault": {
+        "id": "/subscriptions/6bb69dc1-ef0f-4bea-bcdc-580a2ad5e6e4/resourceGroups/fgtestrg/providers/Microsoft.KeyVault/vaults/fgtest"
+        },
+        "secretName": "myvmuserPass"
+      }
+    }
+  }
+}
