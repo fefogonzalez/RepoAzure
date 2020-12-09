@@ -1,0 +1,33 @@
+# Starter pipeline
+
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: 'AzureRmPipeline-conn'
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    inlineScript: 'az group create --name OtroRG --location EastUS'
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'AzureRmPipeline-conn'
+    subscriptionId: '6bb69dc1-ef0f-4bea-bcdc-580a2ad5e6e4'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'fedeprueba'
+    location: 'East US'
+    templateLocation: 'URL of the file'
+    csmFileLink: 'https://raw.githubusercontent.com/fefogonzalez/RepoAzure/main/deploy_resources.json' 
+    overrideParameters: '-adminUsername=myadminuser -dnsLabelPrefix=minuevavmtest'
+    deploymentMode: 'Incremental'
+    deploymentName: 'NombreDeploy'
