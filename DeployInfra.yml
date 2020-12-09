@@ -19,8 +19,7 @@ steps:
     resourceGroupName: 'AcademyInfra'
     location: 'East US'
     templateLocation: 'Linked artifact'
-    csmFile: 'https://raw.githubusercontent.com/fefogonzalez/RepoAzure/main/DeployInfra/azuredeploy.json'
+    csmFile: 'DeployInfra/azuredeploy.json' 
     csmParametersFile: 'https://github.com/fefogonzalez/RepoAzure/blob/main/DeployInfra/azuredeploy.parameters.json'
     deploymentMode: 'Incremental'
     deploymentName: 'mynewinfra'
-
