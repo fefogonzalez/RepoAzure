@@ -12,7 +12,7 @@ export DEBIAN_FRONTEND=noninteractive
 #echo mysql-server-5.6 mysql-server/root_password_again password $dbpass | debconf-set-selections
 
 # Install the LAMP stack and WordPress
-apt-get -y install apache2 php5 wordpress
+apt-get -y install apache2 php7.2 wordpress
 # Install MySQL
 #apt-get -y install mysql-server
 
