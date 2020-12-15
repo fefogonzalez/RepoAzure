@@ -2,20 +2,34 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+    
     "vmDnsName": {
-      "value": "GEN-UNIQUE"
+      "value": "vm-app-01"
     },
+    
     "adminUsername": {
-      "value": "GEN-UNIQUE"
+      "value": "myvmuser"
     },
+    /*
     "mySqlPassword": {
-      "value": "GEN-PASSWORD"
+      "reference": {
+        "keyVault": {
+        "id": "/subscriptions/6bb69dc1-ef0f-4bea-bcdc-580a2ad5e6e4/resourceGroups/fgtestrg/providers/Microsoft.KeyVault/vaults/fgtest"
+        },
+        "secretName": "mySqlPassword"
+      }
     },
+    */
     "vmSize": {
       "value": "Standard_D2_v2"
     },
     "adminPasswordOrKey": {
-      "value": "GEN-SSH-PUB-KEY"
+      "reference": {
+        "keyVault": {
+        "id": "/subscriptions/6bb69dc1-ef0f-4bea-bcdc-580a2ad5e6e4/resourceGroups/fgtestrg/providers/Microsoft.KeyVault/vaults/fgtest"
+        },
+        "secretName": "myvmuserPass"
+      }
     }
   }
 }

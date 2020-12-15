@@ -55,10 +55,6 @@
     }
   },
   "variables": {
-    /*
-    "nicName": "NIC-WEB-01",
-    */
-    //"nicName": "[concat('NIC-', parameters('vmHostName'))]",
     "nicName": "[concat('NIC',parameters('vmDnsName'))]",
 
     "addressPrefix": "10.0.0.0/16",
@@ -88,21 +84,6 @@
     "networkSecurityGroupName": "BBDD-NSG"
   },
   "resources": [
-    /* --- Recurso IP publica --- */
-    /*
-    {
-      "apiVersion": "2020-05-01",
-      "type": "Microsoft.Network/publicIPAddresses",
-      "name": "[variables('publicIPAddressName')]",
-      "location": "[parameters('location')]",
-      "properties": {
-        "publicIPAllocationMethod": "[variables('publicIPAddressType')]",
-        "dnsSettings": {
-          "domainNameLabel": "[parameters('vmDnsName')]"
-        }
-      }
-    },
-    */
     {
       "comments": "Default Network Security Group for template",
       "type": "Microsoft.Network/networkSecurityGroups",
@@ -173,9 +154,6 @@
       "name": "[variables('nicName')]",
       "location": "[parameters('location')]",
       "dependsOn": [
-        /*
-        "[resourceId('Microsoft.Network/publicIPAddresses/', variables('publicIPAddressName'))]",
-        */
         "[resourceId('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]"
       ],
       "properties": {
@@ -184,11 +162,6 @@
             "name": "ipconfig1",
             "properties": {
               "privateIPAllocationMethod": "Dynamic",
-              /*
-              "publicIPAddress": {
-                "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPAddressName'))]"
-              },
-              */
               "subnet": {
                 "id": "[variables('subnetRef')]"
               }
@@ -210,10 +183,7 @@
           "vmSize": "[parameters('vmSize')]"
         },
         "osProfile": {
-          
           "computerName": "[variables('vmName')]",
-          
-          //"computerName": "[parameters('vmHostName')]",
           "adminUsername": "[parameters('adminUsername')]",
           "adminPassword": "[parameters('adminPasswordOrKey')]",
           "linuxConfiguration": "[if(equals(parameters('authenticationType'), 'password'), json('null'), variables('linuxConfiguration'))]"
@@ -226,10 +196,7 @@
             "version": "[variables('imageVersion')]"
           },
           "osDisk": {
-            
             "name": "[concat(variables('vmName'), '_OSDisk')]",
-            
-            //"name": "[concat(parameters('vmHostName'), 'OSDisk')]",
             "caching": "ReadWrite",
             "createOption": "FromImage",
             "managedDisk": {
@@ -250,15 +217,10 @@
       "type": "Microsoft.Compute/virtualMachines/extensions",
 
       "name": "[concat(variables('vmName'),'/newuserscript')]",
-      
-      //"name": "[concat(parameters('vmHostName'),'/newuserscript')]",
       "apiVersion": "2019-12-01",
       "location": "[parameters('location')]",
       "dependsOn": [
-        
         "[resourceId('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
-
-        //"[resourceId('Microsoft.Compute/virtualMachines/', parameters('vmHostName'))]"
       ],
       "properties": {
         "publisher": "Microsoft.Azure.Extensions",
@@ -267,17 +229,11 @@
         "autoUpgradeMinorVersion": true,
         "settings": {
           "fileUris": [
-            /*
-            "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/wordpress-single-vm-ubuntu/install_wordpress.sh"
-          */
             "https://raw.githubusercontent.com/fefogonzalez/RepoAzure/main/Academy_Stage2/install_mysql.sh"
 
           ]
         },
         "protectedSettings": {
-          /*
-          "commandToExecute": "[concat('sh install_wordpress.sh ', parameters('mySqlPassword'))]"
-          */
           "commandToExecute": "[concat('sh install_mysql.sh ', parameters('mySqlPassword'))]"
         }
       }

@@ -5,14 +5,16 @@ apt-get -y update
 logger "Installing WordPress"
 
 # Set up a silent install of MySQL
-dbpass=$1
+#dbpass=$1
 
 export DEBIAN_FRONTEND=noninteractive
-echo mysql-server-5.6 mysql-server/root_password password $dbpass | debconf-set-selections
-echo mysql-server-5.6 mysql-server/root_password_again password $dbpass | debconf-set-selections
+#echo mysql-server-5.6 mysql-server/root_password password $dbpass | debconf-set-selections
+#echo mysql-server-5.6 mysql-server/root_password_again password $dbpass | debconf-set-selections
 
 # Install the LAMP stack and WordPress
-apt-get -y install apache2 mysql-server php5 php5-mysql wordpress
+apt-get -y install apache2 php5 wordpress
+# Install MySQL
+#apt-get -y install mysql-server
 
 # Setup WordPress
 gzip -d /usr/share/doc/wordpress/examples/setup-mysql.gz
@@ -25,3 +27,4 @@ mv /etc/wordpress/config-localhost.php /etc/wordpress/config-default.php
 apachectl restart
 
 logger "Done installing WordPress; open /wordpress to configure"
+#logger "Done installing MySQL"
