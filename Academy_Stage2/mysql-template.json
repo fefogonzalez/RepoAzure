@@ -246,11 +246,15 @@
             /*
             "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/wordpress-single-vm-ubuntu/install_wordpress.sh"
           */
-          
+            "https://raw.githubusercontent.com/fefogonzalez/RepoAzure/main/Academy_Stage2/install_mysql.sh"
+
           ]
         },
         "protectedSettings": {
+          /*
           "commandToExecute": "[concat('sh install_wordpress.sh ', parameters('mySqlPassword'))]"
+          */
+          "commandToExecute": "[concat('sh install_mysql.sh ', parameters('mySqlPassword'))]"
         }
       }
     }
