@@ -1,0 +1,14 @@
+az group create --name <resource-group-name> --location <resource-group-location> #use this command when you need to create a new resource group for your deployment
+az group deployment create --resource-group <my-resource-group> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/wordpress-single-vm-ubuntu/azuredeploy.json
+
+
+
+{
+  "$schema": "https://aka.ms/azure-quickstart-templates-metadata-schema#",
+  "type": "QuickStart",
+  "itemDisplayName": "Deploy a single-VM WordPress to Azure",
+  "description": "This template deploys a complete LAMP stack, then installs and initializes WordPress. Once the deployment is finished, you need to go to http://fqdn.of.your.vm/wordpress/ to finish the configuration, create an account, and get started with WordPress.",
+  "summary": "Deploy a single-VM WordPress to Azure",
+  "githubUsername": "tomconte",
+  "dateUpdated": "2020-08-10"
+}
