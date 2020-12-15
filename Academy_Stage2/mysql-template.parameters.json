@@ -4,12 +4,14 @@
   "parameters": {
     
     "vmDnsName": {
-      "value": "fgpublicname"
-    },
-    
-    "vmName": {
       "value": "vm-bbdd-01"
     },
+    
+    /*
+    "vmHostName": {
+      "value": "vm-bbdd-01"
+    },
+*/
     "adminUsername": {
       "value": "myvmuser"
     },
