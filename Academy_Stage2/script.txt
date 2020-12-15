@@ -1,6 +1,11 @@
+Cloud Shell
 az group create --name <resource-group-name> --location <resource-group-location> #use this command when you need to create a new resource group for your deployment
-az group deployment create --resource-group <my-resource-group> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/wordpress-single-vm-ubuntu/azuredeploy.json
+az group deployment create --resource-group <my-resource-group> --template-uri https://raw.githubusercontent.com/fefogonzalez/RepoAzure/main/Academy_Stage2/mysql-template.json
 
+
+Powershell
+New-AzResourceGroup -Name <resource-group-name> -Location <resource-group-location> #use this command when you need to create a new resource group for your deployment
+New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/wordpress-single-vm-ubuntu/azuredeploy.json
 
 
 {
@@ -12,3 +17,13 @@ az group deployment create --resource-group <my-resource-group> --template-uri h
   "githubUsername": "tomconte",
   "dateUpdated": "2020-08-10"
 }
+
+
+
+This template deploys a complete LAMP stack, then installs and initializes WordPress.
+
+Once the deployment is finished, you need to go to http://fqdn.of.your.vm/wordpress/ to finish the configuration, create an account, and get started with WordPress.
+
+
+Mas info
+https://azure.microsoft.com/en-us/resources/templates/wordpress-single-vm-ubuntu/
