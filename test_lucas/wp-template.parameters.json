@@ -1,0 +1,26 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    
+    "vmDnsName": {
+      "value": "vm-test"
+    },
+    
+    "adminUsername": {
+      "value": "myvmuser"
+    },
+    
+    "vmSize": {
+      "value": "Standard_D2_v2"
+    },
+    "adminPasswordOrKey": {
+      "reference": {
+        "keyVault": {
+        "id": "/subscriptions/6bb69dc1-ef0f-4bea-bcdc-580a2ad5e6e4/resourceGroups/fgtestrg/providers/Microsoft.KeyVault/vaults/fgtest"
+        },
+        "secretName": "myvmuserPass"
+      }
+    }
+  }
+}
