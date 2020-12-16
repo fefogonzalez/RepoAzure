@@ -1,9 +1,9 @@
 #!/bin/bash
 
-apt-get -y update
+sudo apt-get -y update
 
 logger "Instalando virt-what"
 
-apt-get -y install virt-what
+sudo apt-get -y install virt-what
 
 logger "Fin de la instalacion"
